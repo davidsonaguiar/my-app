@@ -11,7 +11,7 @@ import SoftSkill from './SoftSkill';
 export default function App() {
 
   const skill = DATAS?.skills
-  const listSoftSkill = DATAS?.soft_skill.map(skill => <SoftSkill name={skill}/>)
+  const listSoftSkill = DATAS?.soft_skill.map((skill, key) => <SoftSkill key={key} name={skill}/>)
 
   return (
     <View style={styles.container}>
@@ -37,7 +37,8 @@ export default function App() {
             showsHorizontalScrollIndicator={false}
             showsVerticalScrollIndicator={false}
             data={skill}
-            renderItem={({item}) => <ItemList name={item.name} nivel={item.nivel}/>}/>
+            renderItem={({item}) => <ItemList name={item.name} nivel={item.nivel}/>}
+            keyExtractor={item => item.id}/>
         </SafeAreaView>
       </View>
       <StatusBar style='auto'/>
